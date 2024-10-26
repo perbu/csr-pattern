@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/perbu/testify-mock/service"
+	"github.com/perbu/csr-pattern/service"
 	"log/slog"
 	"net/http"
 	"time"

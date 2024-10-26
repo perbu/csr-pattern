@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/perbu/testify-mock/api"
-	"github.com/perbu/testify-mock/repo"
-	"github.com/perbu/testify-mock/service"
+	"github.com/perbu/csr-pattern/api"
+	"github.com/perbu/csr-pattern/repo"
+	"github.com/perbu/csr-pattern/service"
 	"log/slog"
 	"os"
 	"os/signal"
