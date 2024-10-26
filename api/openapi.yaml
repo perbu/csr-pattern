@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Key-Value Store API
+  version: v1
+
+paths:
+  /{key}:
+    get:
+      summary: Read value
+      description: Retrieves the value associated with the given key.
+      operationId: readValue
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: The key to retrieve the value for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Value retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Key not found
+
+    post:
+      summary: Create key-value pair
+      description: Creates a new key-value pair.
+      operationId: createKeyValue
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: The key to create the value for
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The new value to be associated with the key
+      responses:
+        '201':
+          description: Key-value pair created successfully
+        '400':
+          description: Invalid request
+        '409':
+          description: Key already exists
+
+    put:
+      summary: Update value
+      description: Updates the value associated with the given key.
+      operationId: updateValue
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: The key to update the value for
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The new value to be associated with the key
+      responses:
+        '204':
+          description: Value updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Key not found
+
+    delete:
+      summary: Delete key-value pair
+      description: Deletes the key-value pair associated with the given key.
+      operationId: deleteKeyValue
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: The key to delete the value for
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Key-value pair deleted successfully
+        '404':
+          description: Key not found
